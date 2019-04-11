@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, Image, Text, View, ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 import {Container, Title, Label, TextInput, FormGroup, Button, Content} from './Components';
 import container from './container';
 import Key from '../../assets/key.png';
@@ -51,29 +51,31 @@ class Login extends Component {
     return (   
       <Container>
         <Content>
-          <View>
-            <Title>Faça seu login <Image source={Key} style={styles.image}/></Title> 
-            <FormGroup>
-              <Label>E-mail ou usuário:</Label>
-              <TextInput
-                placeholder='Email'
-                onChangeText={this.handleChangeEmail}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label>Senha:</Label>
-              <TextInput
-                secureTextEntry={true}
-                placeholder='Password'
-                onChangeText={this.handleChangePassword}
-              />
-            </FormGroup>
-            { loading && <ActivityIndicator size='large' color='#733DBE'/> }
-          </View>
+          <KeyboardAvoidingView behavior='position' enabled>
+            <View>
+              <Title>Faça seu login <Image source={Key} style={styles.image}/></Title> 
+              <FormGroup>
+                <Label>E-mail ou usuário:</Label>
+                <TextInput
+                  placeholder='Email'
+                  onChangeText={this.handleChangeEmail}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>Senha:</Label>
+                <TextInput
+                  secureTextEntry={true}
+                  placeholder='Password'
+                  onChangeText={this.handleChangePassword}
+                />
+              </FormGroup>
+              { loading && <ActivityIndicator size='large' color='#733DBE'/> }
+            </View>
+          </KeyboardAvoidingView>
         </Content>
         <FormGroup>
           <Button onPress={() => login(this.state.user)}>
-            <Text style={styles.textButton}>Enviar</Text>
+            <Text style={styles.textButton}>Entrar</Text>
           </Button>
         </FormGroup>
       </Container>
