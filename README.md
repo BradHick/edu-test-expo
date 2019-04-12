@@ -59,5 +59,7 @@ This project connects to Agenda Edu`s API and return a list of events, where you
 ](https://github.com/rematch/rematch/blob/master/docs/purpose.md);
 
 
+## [Expo Link](https://expo.io/@bradhick/edu-test-expo)
+
 
 
