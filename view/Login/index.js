@@ -48,6 +48,7 @@ class Login extends Component {
 
   render = () => {
     const { login, loading } = this.props;
+    const { user } = this.state;
     return (   
       <Container>
         <Content>
@@ -73,11 +74,11 @@ class Login extends Component {
             </View>
           </KeyboardAvoidingView>
         </Content>
-        <FormGroup>
-          <Button onPress={() => login(this.state.user)}>
-            <Text style={styles.textButton}>Entrar</Text>
-          </Button>
-        </FormGroup>
+          <FormGroup>
+            <Button onPress={() => login(user)}>
+              <Text style={styles.textButton}>Entrar</Text>
+            </Button>
+          </FormGroup>
       </Container>
     );
   }

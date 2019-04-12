@@ -4,7 +4,7 @@ import brLocale from 'moment/locale/pt-br';
 import groupBy from 'lodash/groupBy';
 import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
-import { View, Button, Text, StyleSheet, ActivityIndicator, SectionList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator, SectionList } from 'react-native';
 import container from './container';
 import { Container, Day, EventListItem, Button as CustomButton } from './Component';
 
