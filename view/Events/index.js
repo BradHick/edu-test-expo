@@ -40,10 +40,6 @@ class Events extends Component {
     };
   };
 
-  componentDidMount() {
-    this.props.navigation.setParams({ logout: this.logout });
-  }
-
   logout = () => {
     this.props.logout();
     this.props.navigation.navigate('Login');
@@ -67,6 +63,7 @@ class Events extends Component {
 
   componentDidMount(){
     const { fetchEvents, token, navigation } = this.props;
+    navigation.setParams({ logout: this.logout });
     if (token == ''){
       navigation.navigate('Login');
     }else{
