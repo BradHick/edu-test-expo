@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import EventItem from './EventItem'
 import moment from 'moment';
 import brLocale from 'moment/locale/pt-br';
@@ -28,17 +27,5 @@ class Event extends Component {
     );
   };
 };
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20
-  },
-  text: {
-    fontSize: 60,
-  }
-});
-
 
 export default Event;

@@ -20,7 +20,6 @@ const EventItemDate = styled.View`
 	width: 80px;
 	height: 80px;
 	padding: 10px 15px;
-	/* flex: 1; */
 	justify-content: center;
 	align-items: center;
 	background-color: rgba(115, 61, 190, 0.10);
