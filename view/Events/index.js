@@ -10,6 +10,17 @@ import { Container, Day, EventListItem, Button as CustomButton } from './Compone
 
 moment.locale('pt-br', brLocale);
 
+const groupEvents = (events) => {
+  const groupedEvents = groupBy(events, (event) => moment(event.startAt).format('dddd, DD MMMM'));
+  const groupEventsTemp = mapValues(groupedEvents, (value, key) => {
+    return {
+      title: key,
+      data: value
+    }
+   });
+   return values(groupEventsTemp);
+}
+
 class Events extends Component {
 
   static navigationOptions = ({navigation}) =>({
@@ -19,13 +30,13 @@ class Events extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'Eventos',
-      // headerRight: (
-      //   <CustomButton
-      //     onPress={() => navigation.getParam('logout')}
-      //   >
-      //     <Text style={styles.textLogout}>{'Sair'}</Text>
-      //   </CustomButton>
-      // ),
+      headerRight: (
+        <CustomButton
+          onPress={navigation.getParam('logout')}
+        >
+          <Text style={styles.textLogout}>{'Sair'}</Text>
+        </CustomButton>
+      )
     };
   };
 
@@ -62,17 +73,6 @@ class Events extends Component {
       fetchEvents();
     }
   }
-
-  groupEvents = (events) => {
-    const groupedEvents = groupBy(events, (event) => moment(event.startAt).format('dddd, DD MMMM'));
-    const groupEventsTemp = mapValues(groupedEvents, (value, key) => {
-      return {
-        title: key,
-        data: value
-      }
-     });
-     return values(groupEventsTemp);
-  }
   
 
   render = () => {
@@ -84,7 +84,7 @@ class Events extends Component {
           renderSectionHeader={({ section: { title } }) => (
             <Day>{title}</Day>
           )}
-          sections={this.groupEvents(events)}
+          sections={groupEvents(events)}
           keyExtractor={(item, index) => `${item}-${index}`}
           renderItem={({ item }) => this.renderEvent(item)}
           ListEmptyComponent={!loading && <Text style={styles.text}>No Events</Text>}
